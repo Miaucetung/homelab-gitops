@@ -3,9 +3,8 @@ kind: Ingress
 metadata:
   name: linux-lpic-learning-platform
   namespace: apps
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
+  ingressClassName: traefik
   rules:
     - host: linux-k8s.ajti.online
       http:
