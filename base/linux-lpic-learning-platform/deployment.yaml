@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: linux-lpic-learning-platform
+  namespace: apps
+  labels:
+    app.kubernetes.io/name: linux-lpic-learning-platform
+    app.kubernetes.io/part-of: homelab-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: linux-lpic-learning-platform
+  template:
+    metadata:
+      labels:
+        app: linux-lpic-learning-platform
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: app
+          image: ghcr.io/miaucetung/linux-lpic-learning-platform:main
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

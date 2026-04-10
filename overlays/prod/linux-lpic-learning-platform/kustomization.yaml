@@ -1,0 +1,6 @@
+resources:
+  - ../../../base/linux-lpic-learning-platform
+
+images:
+  - name: ghcr.io/miaucetung/linux-lpic-learning-platform
+    newTag: main

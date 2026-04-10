@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-learning-app
+  namespace: apps
+spec:
+  selector:
+    app: azure-learning-app
+  ports:
+    - port: 80
+      targetPort: 80

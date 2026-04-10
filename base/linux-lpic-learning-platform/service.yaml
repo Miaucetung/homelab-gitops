@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: linux-lpic-learning-platform
+  namespace: apps
+spec:
+  selector:
+    app: linux-lpic-learning-platform
+  ports:
+    - port: 80
+      targetPort: 80

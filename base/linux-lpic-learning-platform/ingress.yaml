@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: linux-lpic-learning-platform
+  namespace: apps
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - host: linux-k8s.ajti.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: linux-lpic-learning-platform
+                port:
+                  number: 80

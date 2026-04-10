@@ -1,0 +1,6 @@
+resources:
+  - ../../../base/azure-learning-app
+
+images:
+  - name: ghcr.io/miaucetung/azure-learning-app
+    newTag: main
