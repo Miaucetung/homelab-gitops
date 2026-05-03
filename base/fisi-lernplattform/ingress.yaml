@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fisi-lernplattform
+  namespace: apps
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: fisi.ajti.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fisi-lernplattform
+                port:
+                  number: 80

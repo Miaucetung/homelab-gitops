@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fisi-lernplattform
+  namespace: apps
+  labels:
+    app.kubernetes.io/name: fisi-lernplattform
+    app.kubernetes.io/part-of: homelab-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fisi-lernplattform
+  template:
+    metadata:
+      labels:
+        app: fisi-lernplattform
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: app
+          image: ghcr.io/miaucetung/fisi-lernplattform:main
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

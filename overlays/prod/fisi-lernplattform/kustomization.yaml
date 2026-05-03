@@ -1,0 +1,5 @@
+resources:
+  - ../../../base/fisi-lernplattform
+images:
+  - name: ghcr.io/miaucetung/fisi-lernplattform
+    newTag: main
