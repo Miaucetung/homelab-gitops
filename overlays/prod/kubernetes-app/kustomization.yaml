@@ -1,0 +1,6 @@
+resources:
+  - ../../../base/kubernetes-app
+
+images:
+  - name: ghcr.io/miaucetung/kubernetes-app
+    newTag: main

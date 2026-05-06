@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-app
+  namespace: apps
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: k8s.ajti.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-app
+                port:
+                  number: 80
